@@ -9,12 +9,18 @@
   };
 
   outputs = {
+    self,
     nixpkgs,
     utils,
     rust-overlay,
     ...
   }:
-    utils.lib.eachDefaultSystem (
+    {
+      overlays.default = final: prev: {
+        rustlings = self.packages.${final.stdenv.hostPlatform.system}.default;
+      };
+    }
+    // utils.lib.eachDefaultSystem (
       system: let
         pkgs = import nixpkgs {
           inherit system;
