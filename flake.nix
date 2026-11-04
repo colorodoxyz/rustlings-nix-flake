@@ -28,7 +28,7 @@
         };
         rustlings = rustPlatform.buildRustPackage {
           pname = "rustlings";
-          version = "6.4.0";
+          version = "6.5.0";
           src = ./.;
           cargoLock.lockFile = ./Cargo.lock;
           # shortcut: these run exercise bins from target/debug, but nixpkgs sets CARGO_BUILD_TARGET
